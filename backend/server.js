@@ -1,20 +1,12 @@
-const express = require("express"),
-    app = express(),
-    port = process.env.PORT || 8080,
-    cors = require("cors");
-
-// AUTH---
 const basicAuth = require("express-basic-auth");
-const { authenticator, upsertUser, cookieAuth } = require("./authentication");
+var { authenticator, upsertUser, cookieAuth } = require("./authentication");
 const auth = basicAuth({
     authorizer: authenticator
 });
 const cookieParser = require("cookie-parser");
 app.use(cookieParser("82e4e438a0705fabf61f9854e3b575af"));
-// AUTH---
 
-const bodyParser = require("body-parser");
-const fs = require("fs");
+
 
 app.use(cors({
     credentials: true,
